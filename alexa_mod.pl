@@ -82,6 +82,18 @@ intent_dictOut("prove", DictIn, DictOut) :-
   ),
   my_json_answer(AnswerProof, DictOut).
 
+intent_dictOut("arithmatic", DictIn, DictOut) :- 
+  get_dict(intent, DictIn, IntentObject),
+  get_dict(value, IntentObject, Value),
+  split_string(Value, " ", " ", SplitedString),
+  (
+    sub_lst("sum", Value) ->
+      findall(M, (member(Str, SplitedString),atom_number(Str, M)), NewValue),
+      sumlist(NewValue, AnswerNumber),
+      string_concat("Answer for sum is : ", AnswerNumber, AnswerQuery)
+  ),
+  my_json_answer(AnswerQuery, DictOut).
+
 intent_dictOut(_,_,DictOut):-
 my_json_answer('Error Occured : ',DictOut).
 
@@ -91,6 +103,11 @@ my_json_answer(Message, JSON) :-
       text: Message
     }
   }.
+
+my_sublist( Sublist, List ) :-
+    append( [_, Sublist, _], List ).
+
+sub_lst(X, Y) :- string_to_list(Y, B), string_to_list(X, A), my_sublist(A, B).
 
 maybe_dot(MaybeDot, SureDot) :-
   ( atom_concat(_, '.', MaybeDot) ->
