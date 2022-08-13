@@ -1,0 +1,76 @@
+{
+    "intent": {
+        "name": "remember",
+        "value": "John likes Mary"
+    }
+}
+
+{
+    "intent": {
+        "name": "ask",
+        "value": "Who likes Mary?"
+    }
+}
+
+{
+    "intent": {
+        "name": "ask",
+        "value": "Who likes John?"
+    }
+}
+// symentic rules
+{
+    "intent": {
+        "name": "remember",
+        "value": "If A likes B then B likes A."
+    }
+}
+
+{
+    "intent": {
+        "name": "ask",
+        "value": "Who likes John?"
+    }
+}
+
+{
+    "intent": {
+        "name": "remember",
+        "value": "Teacher likes Student"
+    }
+}
+
+{
+    "intent": {
+        "name": "ask",
+        "value": "Who likes Teacher?"
+    }
+}
+
+{
+    "intent": {
+        "name": "ask",
+        "value": "Who likes Student?"
+    }
+}
+
+{
+    "intent": {
+        "name": "prove",
+        "value": "Mary likes John"
+    }
+}
+
+{
+    "intent": {
+        "name": "prove",
+        "value": "Teacher likes John"
+    }
+}
+// consistancy checking
+{
+    "intent": {
+        "name": "remember",
+        "value": "John does not like Mary"
+    }
+}
